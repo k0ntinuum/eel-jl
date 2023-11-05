@@ -56,19 +56,21 @@ function decrypt(p, q)
     p
 end
 
+
 function demo()
-    f = key(20)
-    print(white(),"f  ==  ", gray(160),str(f,""),"\n")
-    l = 50
-    p = key(l)
-    print(white(),"p  ==  ",red(), str(p,""),"\n")
-    c = encrypt(p,f)
-    print(white(),"c  ==  ",yellow(), str(c,""),"\n")
-    d = decrypt(c,f)
-    if p != d print("\nERROR\n") end
+    f = key(32)
+    print(white(),"f  ==  ", gray(255),str(f,""),"\n\n")
+    for i in 1:8
+        p = key(64)
+        print(white(),"p  ==  ",red(), str(p,""),"\n")
+        c = encrypt(p,f)
+        print(white(),"c  ==  ",yellow(), str(c,""),"\n")
+        print(white(),"       ", gray(100),str(p .!= c,""),"\n\n")
+        d = decrypt(c,f)
+        if p != d print("\nERROR\n") end
+    end
     print(white())
 end
-
 
 
 
